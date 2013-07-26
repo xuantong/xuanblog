@@ -1,0 +1,5 @@
+
+
+{{.pageId}}
+<br/>
+{{ .article}}
