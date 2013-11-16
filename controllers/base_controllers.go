@@ -12,6 +12,6 @@ type BaseController struct {
 }
 
 func (this *BaseController) Prepare() {
-	this.Layout = "layout/lay_out1.html"
+	this.Layout = "layout/lay_out_list.html"
 	this.Data["appname"] = beego.AppConfig.String("appname")
 }

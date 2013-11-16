@@ -14,7 +14,7 @@ type ListController struct {
 func (this *ListController) Get() {
 
 	this.TplNames = "list/list.tpl"
-	this.Data["count"] = 12132141243
+	// this.Data["count"] = 12132141243d
 
 	// dbConn := models.DBConn()
 	// defer dbConn.Close()
@@ -22,6 +22,7 @@ func (this *ListController) Get() {
 	qbs.WithQbs(func(q *qbs.Qbs) error {
 		this.Data["articleList"], _ = models.ArticleList(q, 0)
 		this.Data["count"] = models.ArticleCount(q)
+
 		return nil
 	})
 

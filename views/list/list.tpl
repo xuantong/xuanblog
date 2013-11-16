@@ -1,4 +1,4 @@
-
+ 
   {{range .articleList}}
       <div>
         <div class="page-header">
@@ -10,7 +10,7 @@
           <span class="label">文字标签</span> <span class="label">文字标签</span> <span class="label">文字标签</span> <span class="label">文字标签</span>
         </p>
         <p class="lead">
-          {{ .Contenthtml}}
+          {{str2html .Abstract}}
         </p>
         <p class="text-right">
           <a class="btn btn-primary" href="/p/{{ .Id}}">查看更多 »</a>

@@ -2,11 +2,10 @@ package controllers
 
 import (
 	"../models"
-	"github.com/astaxie/beego"
 )
 
 type PageController struct {
-	beego.Controller
+	BaseController
 }
 
 func (this *PageController) Get() {

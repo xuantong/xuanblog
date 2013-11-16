@@ -6,15 +6,14 @@ import (
 )
 
 type xuanblog_article struct { // 文章
-	Id           int64     // 文章ID
-	Title        string    // 文章标题
-	Abstract     string    // 文章摘要，Markdown格式
-	Abstracthtml string    // 文章摘要，HTML格式
-	Content      string    // 文章内容，Markdown格式
-	Contenthtml  string    // 文章内容，HTML格式
-	Pubdate      time.Time // 发布日期
-	Updated      time.Time // 最后更新日期
-	Category     int       // 文章分类(外键)
+	Id       int64     // 文章ID
+	Title    string    // 文章标题
+	Abstract string    // 文章摘要，HTML格式
+	Content  string    // 文章内容，Markdown格式
+	Category int       // 文章分类(外键)
+	Type     int       // 文本类型,0为html,1为markdown
+	Pubdate  time.Time // 发布日期
+	Updated  time.Time // 最后更新日期
 }
 
 // 获得文章列表
