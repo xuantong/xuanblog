@@ -17,6 +17,9 @@
         </p>
       </div>
 {{end}}
+
+{{.count}}
+{{.page}}
       <div class="pagination pagination-centered">
         <ul>
           <li>

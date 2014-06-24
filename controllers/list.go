@@ -14,6 +14,7 @@ type ListController struct {
 func (this *ListController) Get() {
 
 	this.TplNames = "list/list.tpl"
+	page, _ := this.GetInt("p")
 	// this.Data["count"] = 12132141243d
 
 	// dbConn := models.DBConn()
@@ -21,8 +22,11 @@ func (this *ListController) Get() {
 
 	qbs.WithQbs(func(q *qbs.Qbs) error {
 		this.Data["articleList"], _ = models.ArticleList(q, 0)
-		this.Data["count"] = models.ArticleCount(q)
+		total = models.ArticleCount(q)
 
+		// 获取分页导航HTML代码
+		paginator := GetPaginator(total, ItemsPerPage, pagenum)
+		this.Data["Paginator"] = paginator
 		return nil
 	})
 
