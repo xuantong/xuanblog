@@ -14,19 +14,24 @@ type ListController struct {
 func (this *ListController) Get() {
 
 	this.TplNames = "list/list.tpl"
-	page, _ := this.GetInt("p")
 	// this.Data["count"] = 12132141243d
 
-	// dbConn := models.DBConn()
-	// defer dbConn.Close()
+	dbConn := models.DBConn()
+	defer dbConn.Close()
+
+	this.Data["articleList"], _ = models.ArticleList(dbConn, 0)
+	// int64 total = models.ArticleCount(dbConn)
 
 	qbs.WithQbs(func(q *qbs.Qbs) error {
 		this.Data["articleList"], _ = models.ArticleList(q, 0)
+
+		var total int64
 		total = models.ArticleCount(q)
 
 		// 获取分页导航HTML代码
-		paginator := GetPaginator(total, ItemsPerPage, pagenum)
-		this.Data["Paginator"] = paginator
+		this.SetPaginator(10, total)
+		// this.Data["Paginator"] = paginator
+		this.Data["count"] = total
 		return nil
 	})
 

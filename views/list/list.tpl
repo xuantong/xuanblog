@@ -1,4 +1,4 @@
- 
+
   {{range .articleList}}
       <div>
         <div class="page-header">
@@ -19,29 +19,25 @@
 {{end}}
 
 {{.count}}
-{{.page}}
+
+{{if gt .paginator.PageNums 1}}
       <div class="pagination pagination-centered">
+
         <ul>
-          <li>
-            <a href="#">上一页</a>
-          </li>
-          <li>
-            <a href="#">1</a>
-          </li>
-          <li>
-            <a href="#">2</a>
-          </li>
-          <li>
-            <a href="#">3</a>
-          </li>
-          <li>
-            <a href="#">4</a>
-          </li>
-          <li>
-            <a href="#">5</a>
-          </li>
-          <li>
-            <a href="#">下一页</a>
-          </li>
+          {{if .paginator.HasPrev}}
+          <li><a href="{{.paginator.PageLinkFirst}}">{{"paginator.first_page"}}</a></li>
+          <li><a href="{{.paginator.PageLinkPrev}}">&lt;</a></li>
+          {{end}}
+          {{range $index, $page := .paginator.Pages}}
+            <li {{if $.paginator.IsActive .}} class="active"{{end}} >
+                <a href="{{$.paginator.PageLink $page}}">{{$page}}</a>
+            </li>
+        {{end}}
+
+        {{if .paginator.HasNext}}
+          <li><a href="{{.paginator.PageLinkNext}}">下一页</a></li>
+          <li><a href="{{.paginator.PageLinkLast}}">最后一页</a></li>
+        {{end}}
         </ul>
       </div>
+{{end}}

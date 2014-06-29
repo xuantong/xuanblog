@@ -28,7 +28,7 @@ func getArticleList(q *qbs.Qbs) ([]*xuanblog_article, error) {
 }
 
 func main() {
-	qbs.Register("mysql", "xuantong:xuantong@tcp(10.125.14.210:3306)/xuanblog?parseTime=true&charset=utf8", "xuanblog", qbs.NewMysql())
+	qbs.Register("mysql", "root:@tcp(localhost:3306)/xuanblog?parseTime=true&charset=utf8", "xuanblog", qbs.NewMysql())
 	//qbs.Register("mysql", "xuantong:xuantong@tcp(10.125.207.144:3306)/xuanblog?parseTime=true", "xuanblog", qbs.NewMysql())
 
 	qbs_conn, _ := qbs.GetQbs()
